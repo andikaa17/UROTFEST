@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+/* FONT HERTICAL */
+@font-face {
+  font-family: "Hertical";
+  src: url("/fonts/Hertical.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ROOT VARIABLE OPTIONAL */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-hertical: "Hertical", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========================================================= */
+/*  GLOBAL COLOR PALETTE                                     */
+/* ========================================================= */
+:root {
+  --bg-main: #000000;
+  --bg-dark: #0a0a0a;
+  --bg-orange-dark: #1a0a00;
+  --text-main: #ffffff;
+
+  --orange-main: #ff6a00;
+  --orange-light: #ff8c26;
+  --orange-neon: #ff7b00;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ========================================================= */
+/*  GLOBAL BODY STYLE                                        */
+/* ========================================================= */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-hertical) !important;
+  scroll-behavior: smooth;
+}
+
+/* ========================================================= */
+/*  ANIMATIONS                                               */
+/* ========================================================= */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseSlow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulseSlower {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.9s ease forwards;
+}
+.animate-fadeScale {
+  animation: fadeScale 1.2s ease forwards;
+}
+.animate-pulse-slow {
+  animation: pulseSlow 4s infinite;
+}
+.animate-pulse-slower {
+  animation: pulseSlower 7s infinite;
 }
